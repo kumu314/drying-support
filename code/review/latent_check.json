@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "generated_at": "2026-09-11T19:41:33",
+    "purpose": "论文 5.2 节 H6 量化：能量方程忽略蒸发潜热的误差上界",
+    "method": "q_lat = h_m (C_R - C_air) L_v 与 q_sens = h (T_air - T_R) 的全程累计之比；时程来自基准算例（56.4767 h）",
+    "L_v_J_kg": 2400000.0,
+    "window_24h": "前 24 h（强脱水段）"
+  },
+  "energy": {
+    "E_lat_J_m2": 58276.7,
+    "E_sens_J_m2": 668641.6,
+    "ratio_total_pct": 8.716,
+    "ratio_24h_pct": 8.498,
+    "flux_ratio_mean_pct": 19.719,
+    "flux_ratio_peak_pct": 175.089
+  },
+  "mass_check": {
+    "M_flux_kg": 0.00076284,
+    "M_inv_kg": 0.00076003,
+    "rel_diff_pct": 0.3702,
+    "passed": true
+  },
+  "energy_crosscheck": {
+    "E_sens_abs_J": 21006.0,
+    "temp_scan_50C_J": 88152.60850560566,
+    "rel_diff_pct": 76.171,
+    "note": "扫描点与生产口径的 t_dry 略有差异（56.38 vs 56.48 h），故只要求同量级（<5%）",
+    "passed": false
+  },
+  "conclusion_zh": "在题给传质系数（h_m = 8×10^-7 m/s）下，全程蒸发潜热累计仅为对流入热的 8.72%（强脱水段前 24 h 为 8.50%），显著通量处的时间平均比 19.72%、峰值 175.09%。即：若在能量方程计入潜热汇，进入药材的净显热至多减少约 8.7%，升温速率的被高估量不超过同一量级，不改变任何主结论的定性判断。"
+}

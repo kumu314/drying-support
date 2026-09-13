@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "generated_at": "2026-09-11T17:09:20",
+    "purpose": "D 直接灵敏度（补充验证）：验证「内阻控制型，D±10% → t_dry ∓9.8%」的外部一致结论",
+    "framework": "prob3 口径：fvm.solve_case + 完成判据(max C<0.15)，N=20, dt=1.0 s，唯一扰动量为 props 的 D 整体缩放",
+    "air_source": "附件1.xlsx",
+    "seed": 0,
+    "reproducible": true,
+    "base_check": {
+      "ref_t_dry_h": 56.4767,
+      "got_t_dry_h": 56.4767,
+      "match": true
+    }
+  },
+  "rows": [
+    {
+      "case": "base",
+      "D_scale": 1.0,
+      "t_dry_s": 203316.0,
+      "t_dry_h": 56.4767,
+      "wall_s": 167.3
+    },
+    {
+      "case": "D_plus10",
+      "D_scale": 1.1,
+      "t_dry_s": 187209.0,
+      "t_dry_h": 52.0025,
+      "wall_s": 152.0,
+      "delta_pct": -7.9222
+    },
+    {
+      "case": "D_minus10",
+      "D_scale": 0.9,
+      "t_dry_s": 223086.0,
+      "t_dry_h": 61.9683,
+      "wall_s": 205.4,
+      "delta_pct": 9.7238
+    }
+  ],
+  "conclusion": {
+    "D_plus10_delta_pct": -7.9222,
+    "D_minus10_delta_pct": 9.7238,
+    "symmetry_gap_pct": 1.8016,
+    "note": "正负扰动响应幅值不对称（差 ≥0.5 个百分点），局部关系非线性，宜按方向分别报告。"
+  }
+}

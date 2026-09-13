@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "name": "V6 分问传热 Biot 数复核",
+    "formula": "Bi = h*R/k_ref",
+    "h_W_m2K": 25.0,
+    "R_m": 0.02,
+    "ref_state": {
+      "C0_kgkg": 2.55,
+      "T0_K": 301.15
+    },
+    "criterion": "Bi > 0.1 => 内部梯度不可忽略，一维径向离散必要"
+  },
+  "per_problem": {
+    "Q1": {
+      "k_source": "附录2 常物性",
+      "k_ref": 0.36,
+      "Bi": 1.3889
+    },
+    "Q2": {
+      "k_source": "附录3 props_app3 @ (C0, T0)",
+      "k_ref": 0.482958,
+      "Bi": 1.0353
+    },
+    "Q3": {
+      "k_source": "附录3 props_app3 @ (C0, T0)",
+      "k_ref": 0.482958,
+      "Bi": 1.0353
+    },
+    "Q4": {
+      "k_source": "附录4 props_app4 @ (C0, T0)",
+      "k_ref": 0.263662,
+      "Bi": 1.8964
+    }
+  },
+  "note_Q4": "论文 §4.4 取约 1.90；本表按附录4 物性式在初始态精算 k = 0.263662（Bi = 1.8964），圆整即 1.90。",
+  "paper_claim": {
+    "P1.Bi_heat": 1.3889,
+    "Q2_Q3_approx": 1.04,
+    "Q4_approx": 1.9
+  },
+  "verdict": {
+    "P1": "match",
+    "Q2_Q3": "match",
+    "Q4": "match",
+    "all_gt_0.1": true
+  }
+}

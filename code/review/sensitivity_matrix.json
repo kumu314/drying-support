@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "generated_at": "2026-09-11T20:31:56",
+    "purpose": "灵敏度全参定量表（D/h_m/h/k/rho/c_p/判据阈值 各 ±10%）",
+    "framework": "问题3 口径：fvm.solve_case + 完成判据(max C<0.15)，N=20, dt=1.0 s；基线逐位复现 56.4767 h",
+    "air_source": "附件1.xlsx",
+    "rho_cp_rows": [
+      {
+        "case": "base",
+        "scale": 1.0,
+        "t_dry_s": 203316.0,
+        "t_dry_h": 56.4767
+      },
+      {
+        "case": "rho_plus10",
+        "scale": 1.1,
+        "t_dry_s": 203349.0,
+        "t_dry_h": 56.4858,
+        "delta_pct": 0.0162,
+        "wall_s": 97.4
+      },
+      {
+        "case": "rho_minus10",
+        "scale": 0.9,
+        "t_dry_s": 203283.0,
+        "t_dry_h": 56.4675,
+        "delta_pct": -0.0162,
+        "wall_s": 108.0
+      },
+      {
+        "case": "cp_plus10",
+        "scale": 1.1,
+        "t_dry_s": 203349.0,
+        "t_dry_h": 56.4858,
+        "delta_pct": 0.0162,
+        "wall_s": 121.8
+      },
+      {
+        "case": "cp_minus10",
+        "scale": 0.9,
+        "t_dry_s": 203283.0,
+        "t_dry_h": 56.4675,
+        "delta_pct": -0.0162,
+        "wall_s": 113.9
+      }
+    ]
+  },
+  "rows": [
+    {
+      "param": "判据阈值 C_crit",
+      "plus_case": "thr_plus10",
+      "minus_case": "thr_minus10",
+      "plus10_pct": -19.7363,
+      "minus10_pct": 31.8642,
+      "source": "review/param_sensitivity.json"
+    },
+    {
+      "param": "水分扩散系数 D",
+      "plus_case": "D_plus10",
+      "minus_case": "D_minus10",
+      "plus10_pct": -7.9222,
+      "minus10_pct": 9.7238,
+      "source": "review/d_sensitivity.json"
+    },
+    {
+      "param": "对流传质系数 h_m",
+      "plus_case": "hm_plus10",
+      "minus_case": "hm_minus10",
+      "plus10_pct": -1.1027,
+      "minus10_pct": 1.3949,
+      "source": "review/param_sensitivity.json"
+    },
+    {
+      "param": "密度 rho",
+      "plus_case": "rho_plus10",
+      "minus_case": "rho_minus10",
+      "plus10_pct": 0.0162,
+      "minus10_pct": -0.0162,
+      "source": "本次补跑"
+    },
+    {
+      "param": "比热 c_p",
+      "plus_case": "cp_plus10",
+      "minus_case": "cp_minus10",
+      "plus10_pct": 0.0162,
+      "minus10_pct": -0.0162,
+      "source": "本次补跑"
+    },
+    {
+      "param": "对流换热系数 h",
+      "plus_case": "h_plus10",
+      "minus_case": "h_minus10",
+      "plus10_pct": -0.0128,
+      "minus10_pct": 0.0152,
+      "source": "review/param_sensitivity.json"
+    },
+    {
+      "param": "导热系数 k",
+      "plus_case": "k_plus10",
+      "minus_case": "k_minus10",
+      "plus10_pct": -0.0025,
+      "minus10_pct": 0.0025,
+      "source": "review/param_sensitivity.json"
+    }
+  ],
+  "order": [
+    "判据阈值 C_crit",
+    "水分扩散系数 D",
+    "对流传质系数 h_m",
+    "密度 rho",
+    "比热 c_p",
+    "对流换热系数 h",
+    "导热系数 k"
+  ],
+  "conclusion_zh": "七参数 ±10% 扫描的层级排序：判据阈值（−19.7%/+31.9%）≫ 扩散系数 D（−7.9%/+9.7%）≫ 对流传质 h_m（−1.1%/+1.4%）≫ 密度、比热、对流换热 h、导热 k（|Δ| ≤ 0.03%）。热物性 rho/c_p/k 与换热 h 几乎不影响烘干时间——它们只改变升温快慢，而烘干进程由水分扩散与停机判据主导；全部参数响应方向不对称，t_dry 对扰动呈非线性，报告时应按方向分别给出。"
+}

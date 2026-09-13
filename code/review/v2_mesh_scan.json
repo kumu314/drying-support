@@ -1,0 +1,52 @@
+{
+  "schema": "v2-mesh-finding/v1",
+  "generated": "2026-09-11",
+  "author": "verification",
+  "trigger": "延长问题二验证窗口至 20 h 后，复核判停时刻 t_dry 的网格敏感度",
+  "common_setup": {
+    "props": "附录3 (props_app3)",
+    "dt_s": 1.0,
+    "stop_rule": "烘干完成判据：max_r C(r,t) < 0.15 kg/kg",
+    "air": "附件1.xlsx (0-14400s 实测驱动, 其后冻结 50°C / 0.05 kg/kg)"
+  },
+  "v2_at_20h": {
+    "t_end_s": 72000.0,
+    "ref_N": 80,
+    "criterion": "max_dT < 0.01 AND max_dC < 0.01",
+    "passed": false,
+    "rows": [
+      {"N": 20, "dr_mm": 1.0, "max_dT_vs_N80": 9.947598300641403e-14, "max_dC_vs_N80": 0.017467082468696035},
+      {"N": 40, "dr_mm": 0.5, "max_dT_vs_N80": 4.263e-14, "max_dC_vs_N80": 0.01029},
+      {"N": 80, "dr_mm": 0.25, "max_dT_vs_N80": 0.0, "max_dC_vs_N80": 0.0}
+    ],
+    "dc_ratio_n20_to_n40": 0.589,
+    "implied_order": 0.76,
+    "note": "同样的 V2 在 3h 窗口是 PASS（ΔT 1.58e-4 / ΔC 8.18e-4）—— 3h 窗口掩盖了后期问题"
+  },
+  "tdry_mesh_scan": {
+    "rows": [
+      {"N": 20, "dr_mm": 1.0, "t_dry_s": 203316, "t_dry_h": 56.4767, "stopped_early": true},
+      {"N": 40, "dr_mm": 0.5, "t_dry_s": 205225, "t_dry_h": 57.0069, "stopped_early": true},
+      {"N": 60, "dr_mm": 0.3333, "t_dry_s": 205859, "t_dry_h": 57.1831, "stopped_early": true}
+    ],
+    "increment_ratio": 0.332,
+    "observed_order": 1.0,
+    "richardson": {
+      "model": "t_N = t_inf + A/N",
+      "A_h": -21.208,
+      "t_inf_h": 57.537,
+      "back_substitution": {"N40": 57.0069, "N60": 57.1836}
+    },
+    "n20_bias_pct": -1.84,
+    "qualitative_unchanged": "56.48 / 57.01 / 57.54 h 均落在题面 2-3 天区间"
+  },
+  "affected": {
+    "prob2": {"N_default": 20, "t_end_h": 56.4767},
+    "prob3": {"N_default": 20, "t_dry_h": 56.4767},
+    "prob4": {"N_default": 20, "t_dry_h": 50.8097, "note": "Lagrangian 材料坐标；未做 N 扫描"}
+  },
+  "reproduce": {
+    "v2": "python prob2/solve.py --air 附件1.xlsx",
+    "scan": "for N in 20 40 60; do python prob2/solve.py --air 附件1.xlsx --N $N --skip-verify --no-xlsx --out-dir /tmp/n$N; done"
+  }
+}

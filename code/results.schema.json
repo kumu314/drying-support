@@ -1,0 +1,80 @@
+{
+  "_usage": "results.json 的唯一真源 schema。已按 2026-09-10 开赛题 A《药材的烘干问题》定义。各字段含义与单位见本文件对应的 _meaning / _units 说明。",
+  "_status": "FINAL v2.1（P5 品质模块键与 P3 灵敏度键均已登记）",
+  "_rule": "① 键名 P1–P5 对应题目的第几问（P5=品质变化动力学 Q，单向被动拓展）；② 每个数值字段须写明单位与含义（见各 _meaning）；③ 跑不出来的字段值写 null，绝不编数；④ 'figures' 每项须含 id/file/caption 三个字符串字段；⑤ '_' 开头的键是注释，校验时忽略。",
+  "_units": "本文件不写单位（schema 只表达类型）。单位一律随字段在 _meaning 中写明——无单位裸数禁止进论文。",
+
+  "meta": {
+    "generated_at": "str",
+    "seed": "num",
+    "solver_version": "str",
+    "reproducible": "bool"
+  },
+
+  "P1": {
+    "_meaning": "问题1：预热平衡阶段（0-1800 s）药材温度与水分浓度变化规律（一维轴对称径向 FVM + Crank-Nicolson）",
+    "T_center_1800s": "num",
+    "T_surface_1800s": "num",
+    "T_rise_1800s": "num",
+    "C_center_1800s": "num",
+    "C_surface_1800s": "num",
+    "C_surface_drop_pct": "num",
+    "C_center_drop_pct": "num",
+    "Bi_heat": "num",
+    "Bi_mass": "num",
+    "Fo_heat": "num",
+    "Fo_mass": "num",
+    "E_absorbed": "num",
+    "dt_s": "num",
+    "dr_mm": "num",
+    "tau_ratio": "num"
+  },
+
+  "P2": {
+    "_meaning": "问题2：整个烘干过程（2-3 天）的温湿度演化，物性改用附录3 经验公式（rho(C)/cp(C)/k(C)/D(C,T)），顺序耦合 + Picard 迭代",
+    "t_end_h": "num",
+    "T_center_3h": "num",
+    "T_surface_3h": "num",
+    "C_surface_3h": "num"
+  },
+
+  "P3": {
+    "_meaning": "问题3：由判据 max_r C(r,t) < 0.15 kg/kg 反解烘干所需时间（t_dry_sens_D*/t_dry_D* 四键 = D±10% 直接灵敏度实测，见 d_sensitivity.py）",
+    "t_dry_h": "num",
+    "C_max_at_dry": "num",
+    "C_center_at_dry": "num",
+    "t_dry_sens_D10_pct": "num",
+    "t_dry_sens_Dm10_pct": "num",
+    "t_dry_D10_h": "num",
+    "t_dry_Dm10_h": "num"
+  },
+
+  "P4": {
+    "_meaning": "问题4：计入附件2 的半径收缩（动边界）后的烘干时长，物性用附录4；dt_material/dt_geometry 为三组消融 A/B/C 的效应分解（B−A / C−B）",
+    "t_dry_h": "num",
+    "shrink_pct": "num",
+    "C_max_at_dry": "num",
+    "dt_material": "num",
+    "dt_geometry": "num"
+  },
+
+  "P5": {
+    "_meaning": "品质变化动力学 Q：有效成分保留率（唯一集中创新，单向被动——由已解出的 T(r,t) 事后积分，不反馈传热方程，不改变 P1–P4 主结果）。模型参数 Ea_Q=73 kJ/mol、k_ref_Q=0.05/h",
+    "Q_mean_30h": "num",
+    "Q_mean_at_dry": "num",
+    "Q_center_at_dry": "num",
+    "Q_surface_at_dry": "num",
+    "Q_min_at_dry": "num",
+    "t_dry_h": "num",
+    "isothermal_check": "object",
+    "qbar_curve_h": "object",
+    "Q_profile_at_dry": "list",
+    "sensitivity": "object",
+    "verification": "object",
+    "temp_scan": "list"
+  },
+
+  "figures": "list",
+
+  "_sensitivity_note": "敏感性分析块（hm_scan / h_scan / R_scan）**暂不纳入 schema**：本 schema 语言无『可选字段』语义，写进去即变必填，会让子问题未全部完成时的结果无法通过 schema 校验。待扫描结果真实产出后再追加为 schema v2。表结构见 `results.json` 中同名字段。"
+}

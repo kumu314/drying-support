@@ -1,0 +1,53 @@
+{
+  "_meta": {
+    "task": "t_dry 对冻结温度 T∞ 敏感度（50±2 °C 两点）",
+    "generated_at": "2026-09-12T10:26:47",
+    "solver": "p3-fvm-cn-varprops-v1",
+    "reuse": "prob3/solve.py 主求解器原样复用，仅替换冻结温度常量",
+    "grid": {
+      "N": 20,
+      "dt_s": 1.0
+    },
+    "paper_base_h": 56.4767,
+    "base_reproduce_h": 56.4767,
+    "base_reproduce_ok": true,
+    "note": "±2 °C 为烘房温控典型波动带宽；±10% 量级（±5 °C）见 temp_tradeoff"
+  },
+  "rows": [
+    {
+      "T_inf_C": 48.0,
+      "t_dry_h": 60.1819,
+      "t_dry_s": 216655,
+      "C_max_at_dry": 0.14999986,
+      "stopped_early": true,
+      "picard_max": 4,
+      "wall_s": 78.7,
+      "d_h_vs_50": 3.7052,
+      "d_pct_vs_50": 6.5606
+    },
+    {
+      "T_inf_C": 50.0,
+      "t_dry_h": 56.4767,
+      "t_dry_s": 203316,
+      "C_max_at_dry": 0.14999975,
+      "stopped_early": true,
+      "picard_max": 4,
+      "wall_s": 71.3,
+      "d_h_vs_50": 0.0,
+      "d_pct_vs_50": 0.0001
+    },
+    {
+      "T_inf_C": 52.0,
+      "t_dry_h": 53.0869,
+      "t_dry_s": 191113,
+      "C_max_at_dry": 0.14999987,
+      "stopped_early": true,
+      "picard_max": 4,
+      "wall_s": 65.4,
+      "d_h_vs_50": -3.3898,
+      "d_pct_vs_50": -6.0021
+    }
+  ],
+  "headline": "冻结温度 ±2 °C 时 t_dry 在 [60.18, 53.09] h 内变动，相对论文口径 56.48 h 的偏离为 +6.6% / -6.0%",
+  "one_liner": "附件1 覆盖区（前 4 h）内驱动量逐点实测、无外推；外推区冻结温度 ±2 °C（烘房温控典型带宽）仅使 t_dry 偏离约百分之几，远小于判据阈值 ±10% 引起的 ∓20%/32%，外推口径不改变结论量级"
+}

@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "generated_at": "2026-09-11T20:14:14",
+    "purpose": "附件1 校验表（题面要求的模型校验的诚实落法）",
+    "caliber": "附件1 仅环境侧数据 → 校验 = 驱动一致性（插值过点偏差=0） + 响应合理性（滞后比收窄、表面渐近环境）",
+    "air_source": "附件1.xlsx",
+    "response_source": "prob1/result1.xlsx（生产输出）"
+  },
+  "checks": {
+    "driver_deviation_all_zero": true,
+    "lag_ratio_narrowing": true,
+    "surface_monotonic_rising": true,
+    "all_passed": true
+  },
+  "rows": [
+    {
+      "t_s": 300,
+      "air_T_measured": 30.834,
+      "air_T_model": 30.834,
+      "dev_T": 0.0,
+      "air_C_measured": 0.02191,
+      "air_C_model": 0.02191,
+      "dev_C": 0.0,
+      "T_center_C": 28.0411,
+      "T_surface_C": 28.8469,
+      "gap_air_surface_C": 1.9871,
+      "lag_ratio": 0.7012,
+      "source": "分节点（偏差恒等于 0）"
+    },
+    {
+      "t_s": 600,
+      "air_T_measured": 33.202,
+      "air_T_model": 33.202,
+      "dev_T": 0.0,
+      "air_C_measured": 0.02428,
+      "air_C_model": 0.02428,
+      "dev_C": 0.0,
+      "T_center_C": 28.4537,
+      "T_surface_C": 30.164,
+      "gap_air_surface_C": 3.038,
+      "lag_ratio": 0.584,
+      "source": "分节点（偏差恒等于 0）"
+    },
+    {
+      "t_s": 900,
+      "air_T_measured": 35.524,
+      "air_T_model": 35.524,
+      "dev_T": 0.0,
+      "air_C_measured": 0.0266,
+      "air_C_model": 0.0266,
+      "dev_C": 0.0,
+      "T_center_C": 29.3245,
+      "T_surface_C": 31.7297,
+      "gap_air_surface_C": 3.7943,
+      "lag_ratio": 0.5043,
+      "source": "分节点（偏差恒等于 0）"
+    },
+    {
+      "t_s": 1200,
+      "air_T_measured": 37.882,
+      "air_T_model": 37.882,
+      "dev_T": 0.0,
+      "air_C_measured": 0.02891,
+      "air_C_model": 0.02891,
+      "dev_C": 0.0,
+      "T_center_C": 30.5428,
+      "T_surface_C": 33.4269,
+      "gap_air_surface_C": 4.4551,
+      "lag_ratio": 0.4508,
+      "source": "分节点（偏差恒等于 0）"
+    },
+    {
+      "t_s": 1500,
+      "air_T_measured": 39.595,
+      "air_T_model": 39.595,
+      "dev_T": 0.0,
+      "air_C_measured": 0.03098,
+      "air_C_model": 0.03098,
+      "dev_C": 0.0,
+      "T_center_C": 31.9957,
+      "T_surface_C": 35.1204,
+      "gap_air_surface_C": 4.4746,
+      "lag_ratio": 0.3859,
+      "source": "分节点（偏差恒等于 0）"
+    },
+    {
+      "t_s": 1800,
+      "air_T_measured": 41.513,
+      "air_T_model": 41.513,
+      "dev_T": 0.0,
+      "air_C_measured": 0.03307,
+      "air_C_model": 0.03307,
+      "dev_C": 0.0,
+      "T_center_C": 33.5752,
+      "T_surface_C": 36.7853,
+      "gap_air_surface_C": 4.7277,
+      "lag_ratio": 0.3499,
+      "source": "分节点（偏差恒等于 0）"
+    }
+  ],
+  "markdown_table": "**附件1 校验表**（驱动一致性 + 响应合理性）\n\n| t (s) | T_air 实测 | T_air 模型采用 | ΔT | C_air 实测 | C_air 模型采用 | ΔC | 药材中心 T | 药材表面 T | 环境—表面温差 |\n|---|---|---|---|---|---|---|---|---|---|\n| 300 | 30.834 | 30.834000 | 0.0e+00 | 0.0219 | 0.021910 | 0.0e+00 | 28.0411 | 28.8469 | 1.987 |\n| 600 | 33.202 | 33.202000 | 0.0e+00 | 0.0243 | 0.024280 | 0.0e+00 | 28.4537 | 30.1640 | 3.038 |\n| 900 | 35.524 | 35.524000 | 0.0e+00 | 0.0266 | 0.026600 | 0.0e+00 | 29.3245 | 31.7297 | 3.794 |\n| 1200 | 37.882 | 37.882000 | 0.0e+00 | 0.0289 | 0.028910 | 0.0e+00 | 30.5428 | 33.4269 | 4.455 |\n| 1500 | 39.595 | 39.595000 | 0.0e+00 | 0.0310 | 0.030980 | 0.0e+00 | 31.9957 | 35.1204 | 4.475 |\n| 1800 | 41.513 | 41.513000 | 0.0e+00 | 0.0331 | 0.033070 | 0.0e+00 | 33.5752 | 36.7853 | 4.728 |\n\n说明：t=300–1800 s 均为附件1 分节点，线性插值过点，驱动偏差严格为 0——模型无任何自由发挥。预热期环境升温快于药材，环境—表面温差由 1.99 °C 扩大至 4.73 °C 属正常物理；无量纲滞后比 (T_air−T_s)/(T_air−T_0) 由 0.70 收窄至 0.35，表面温度单调上升、渐近跟踪环境温度，与预热阶段的物理预期一致。"
+}

@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "generated_at": "2026-09-11T20:15:51",
+    "purpose": "附带：Picard 外迭代统计（论文 §4.2 用）",
+    "tolerances": {
+      "tol_heat": 1e-08,
+      "tol_C": 1e-11,
+      "max_picard": 30
+    },
+    "note": "每时间步计一次外迭代；恒物性问题一不解耦迭代，不统计"
+  },
+  "cases": [
+    {
+      "case": "prob2（报告窗口 0–3 h）",
+      "steps": 10800,
+      "picard_mean": 3.482,
+      "picard_max": 4,
+      "wall_s": 8.3
+    },
+    {
+      "case": "prob3（全程到判据）",
+      "t_dry_h": 56.4767,
+      "steps": 203316,
+      "picard_mean": 3.0256,
+      "picard_max": 4,
+      "wall_s": 129.6
+    },
+    {
+      "case": "prob4（说明）",
+      "note": "与 prob3 同一 Picard 机制（附录4 材质 + 动边界独立实现 solve_moving），迭代次数量级与 prob3 相当；生产求解日志已报告其最大迭代数"
+    }
+  ],
+  "conclusion_zh": "外迭代代价极低：报告窗口内平均 3.48 次/步、峰值 4 次；全程平均 3.03 次/步、峰值 4 次（容差温度块 1e-8、水分块 1e-11）。变物性耦合收敛快，印证「顺序耦合 + Picard」在该问题上是低成本选择。"
+}

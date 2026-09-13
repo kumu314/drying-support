@@ -1,0 +1,104 @@
+{
+  "meta": {
+    "generated_at": "2026-09-11T20:00:14",
+    "purpose": "论文 5.3 节全参数直接灵敏度量化：单参数 ±10% 扰动下 t_dry 的相对变化，层级排序与方向不对称性",
+    "framework": "问题3 口径：fvm.solve_case + 完成判据(max C<0.15)，N=20, dt=1.0 s；D 行引用 d_sensitivity.json（同口径）",
+    "air_source": "附件1.xlsx",
+    "base_check": {
+      "base_s": 203316.0,
+      "base2_s": 203316.0,
+      "identical": true,
+      "ref_t_dry_h": 56.4767,
+      "match_ref": true
+    }
+  },
+  "rows": [
+    {
+      "case": "h_plus10",
+      "t_dry_s": 203290.0,
+      "t_dry_h": 56.4694,
+      "delta_pct": -0.0128
+    },
+    {
+      "case": "h_minus10",
+      "t_dry_s": 203347.0,
+      "t_dry_h": 56.4853,
+      "delta_pct": 0.0152
+    },
+    {
+      "case": "hm_plus10",
+      "t_dry_s": 201074.0,
+      "t_dry_h": 55.8539,
+      "delta_pct": -1.1027
+    },
+    {
+      "case": "hm_minus10",
+      "t_dry_s": 206152.0,
+      "t_dry_h": 57.2644,
+      "delta_pct": 1.3949
+    },
+    {
+      "case": "k_plus10",
+      "t_dry_s": 203311.0,
+      "t_dry_h": 56.4753,
+      "delta_pct": -0.0025
+    },
+    {
+      "case": "k_minus10",
+      "t_dry_s": 203321.0,
+      "t_dry_h": 56.4781,
+      "delta_pct": 0.0025
+    },
+    {
+      "case": "thr_plus10",
+      "t_dry_s": 163189.0,
+      "t_dry_h": 45.3303,
+      "delta_pct": -19.7363
+    },
+    {
+      "case": "thr_minus10",
+      "t_dry_s": 268101.0,
+      "t_dry_h": 74.4725,
+      "delta_pct": 31.8642
+    }
+  ],
+  "tornado_order": [
+    "判据阈值 C_th ±10%",
+    "水分扩散系数 D ±10%",
+    "对流传质系数 h_m ±10%",
+    "对流换热系数 h ±10%",
+    "导热系数 k ±10%"
+  ],
+  "tornado": [
+    {
+      "param": "判据阈值 C_th ±10%",
+      "plus10_pct": -19.7363,
+      "minus10_pct": 31.8642
+    },
+    {
+      "param": "水分扩散系数 D ±10%",
+      "plus10_pct": -7.9222,
+      "minus10_pct": 9.7238
+    },
+    {
+      "param": "对流传质系数 h_m ±10%",
+      "plus10_pct": -1.1027,
+      "minus10_pct": 1.3949
+    },
+    {
+      "param": "对流换热系数 h ±10%",
+      "plus10_pct": -0.0128,
+      "minus10_pct": 0.0152
+    },
+    {
+      "param": "导热系数 k ±10%",
+      "plus10_pct": -0.0025,
+      "minus10_pct": 0.0025
+    }
+  ],
+  "D_reference": {
+    "D_plus10_delta_pct": -7.9222,
+    "D_minus10_delta_pct": 9.7238,
+    "source": "review/d_sensitivity.json"
+  }
+}
