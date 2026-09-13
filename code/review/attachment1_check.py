@@ -98,9 +98,9 @@ def main():
             gap_air_surface_C=round(gap, 4),
             lag_ratio=round(lag_ratio, 4),
             source=src))
-        table_md.append(
-            f"| {t} | {tab[t][0]:.3f} | {Ta_model:.6f} | {dTa:.1e} | "
-            f"{tab[t][1]:.4f} | {Ca_model:.6f} | {dCa:.1e} | "
+        table_md.append(                            # 小数位与「实测」列对齐
+            f"| {t} | {tab[t][0]:.3f} | {Ta_model:.3f} | {dTa:.4f} | "
+            f"{tab[t][1]:.4f} | {Ca_model:.4f} | {dCa:.4f} | "
             f"{Tc:.4f} | {Ts:.4f} | {gap:.3f} |")
 
     gaps = [r["gap_air_surface_C"] for r in rows]
