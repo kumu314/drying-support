@@ -177,3 +177,10 @@ python tools/run_e2e.py               :: 端到端复跑并逐位比对论文口
 | `fig_pareto_tradeoff.png` | 61 KB |
 | `fig_tornado.png` | 41 KB |
 | `fig_v7_shrinkage.png` | 94 KB |
+
+## 赛后状态（2026-09-15 归档）
+
+- 本仓库是 **2026 国赛 A 题「药材的烘干问题」** 的**交付快照**：最终论文支撑材料（README + code 56 + figs 16 = 73 文件，≤20MB）。
+- 对应协作过程仓库：`kumu314/our-collab-project`（已打 `v1.0-final`）。
+- 已转 **public**，供论文附录在线地址引用。
+- 匿名化实测干净（小羽 / 枯木 / 队友代号 / 模型名 / 学校名 / 内部目录名 0 命中；仅 2 处 `kumu314` 为在线地址账号名）。
